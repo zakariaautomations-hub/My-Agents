@@ -3,101 +3,369 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title> Sweet Auto Detailing AI Customer Support</title>
+  <title>Speed Auto Detailing — Services & AI Support</title>
+  <meta name="description" content="Premium car detailing in Dallas. Explore services like Full Interior, Wash & Wax, Paint Correction, Ceramic Coating, PPF, Window Tinting and more. Chat with our AI receptionist for quick quotes and availability." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #000;
-      color: #FFD700;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg:#0b1220;          /* deep midnight */
+      --bg-2:#0f1b2d;        /* card bg */
+      --text:#e6eefc;        /* primary text */
+      --muted:#9fb3d1;       /* secondary text */
+      --accent:#22d3ee;      /* cyan */
+      --accent-2:#a78bfa;    /* violet */
+      --border:#23324a;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --maxw:1100px;
     }
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(34,211,238,.15), transparent 60%),
+        radial-gradient(900px 500px at -10% 20%, rgba(167,139,250,.12), transparent 60%),
+        var(--bg);
+      line-height:1.6;
     }
-    header h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
+    a{color:var(--accent);text-decoration:none}
+    a:hover{opacity:.9}
+
+    .container{max-width:var(--maxw); margin:0 auto; padding:24px}
+    header{
+      padding:72px 0 40px;
+      text-align:center;
     }
-    header p {
-      font-size: 1.2em;
-      margin-top: 0;
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 12px; border:1px solid var(--border); border-radius:999px;
+      font-size:.9rem; color:var(--muted); background:rgba(255,255,255,.02)
     }
-    .services, .contact {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .stars{letter-spacing:2px; color:#ffd166}
+    h1{
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      margin:16px 0 10px; font-weight:800;
     }
-    .services h2, .contact h2 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
+    .subtitle{
+      color:var(--muted);
+      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      max-width:800px; margin:0 auto 18px;
     }
-    .services ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.1em;
+    .hero-card{
+      margin:28px auto 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      padding:22px;
+      display:grid; grid-template-columns: 1fr 1fr; gap:18px;
     }
-    .services ul li {
-      margin-bottom: 0.5em;
+    .hero-item{
+      background:var(--bg-2);
+      border:1px solid var(--border);
+      border-radius:14px; padding:16px;
     }
-    .agent-section {
-      text-align: center;
-      margin: 40px 0;
+    .hero-item h3{margin:0 0 6px; font-size:1.05rem}
+    .hero-item p{margin:0; color:var(--muted); font-size:.95rem}
+
+    section{padding:40px 0}
+    .section-title{
+      font-size:1.8rem; margin:0 0 8px; font-weight:800;
     }
-    .cta-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 30px;
-      background-color: #FFD700;
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: background-color 0.3s;
+    .section-sub{color:var(--muted); margin:0 0 22px}
+
+    /* Services grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:18px;
     }
-    .cta-button:hover {
-      background-color: #e6b800;
+    .card{
+      grid-column: span 4;
+      background:var(--bg-2);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      transition:transform .2s ease, border-color .2s ease;
     }
-    .contact p {
-      margin: 0.5em 0;
-      font-size: 1.1em;
+    .card:hover{transform:translateY(-2px); border-color:rgba(34,211,238,.5)}
+    .card h3{margin:0 0 8px; font-size:1.15rem}
+    .pill{
+      display:inline-block; padding:4px 10px; border-radius:999px;
+      font-size:.8rem; color:#061422; background:var(--accent); font-weight:700;
+      margin-bottom:10px;
     }
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      margin-top: 60px;
-      padding: 20px 0;
-      border-top: 1px solid #444;
+    .list{margin:10px 0 0; padding-left:18px}
+    .list li{margin:6px 0; color:var(--muted)}
+
+    /* Packages */
+    .package{grid-column: span 4; position:relative; overflow:hidden}
+    .package .price{
+      font-weight:800; font-size:1.4rem; margin:6px 0 10px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
     }
+
+    /* Process */
+    .steps{display:grid; grid-template-columns: repeat(5,1fr); gap:14px}
+    .step{
+      background:var(--bg-2); border:1px solid var(--border); border-radius:12px; padding:14px;
+      text-align:center
+    }
+    .step .num{
+      display:inline-grid; place-items:center; width:34px; height:34px; border-radius:50%;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#061422; font-weight:800; margin-bottom:8px
+    }
+    .step p{margin:0; color:var(--muted); font-size:.95rem}
+
+    /* FAQ */
+    .faq{grid-column: span 6}
+    details{
+      background:var(--bg-2); border:1px solid var(--border); border-radius:12px; padding:14px;
+    }
+    details + details{margin-top:10px}
+    summary{cursor:pointer; font-weight:600}
+    details p{color:var(--muted); margin:8px 0 0}
+
+    /* Contact */
+    .contact-card{
+      background: linear-gradient(180deg, rgba(167,139,250,.12), rgba(34,211,238,.10));
+      border:1px solid var(--border); border-radius:var(--radius); padding:18px;
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-card{grid-template-columns:1fr}
+      .card,.package{grid-column: span 6}
+      .steps{grid-template-columns: repeat(3,1fr)}
+      .faq{grid-column: span 12}
+    }
+    @media (max-width: 640px){
+      .card,.package{grid-column: span 12}
+      .steps{grid-template-columns: repeat(2,1fr)}
+    }
+
+    footer{padding:40px 0; text-align:center; color:var(--muted); font-size:.95rem}
   </style>
 </head>
 <body>
-  <header>
-    <h1>AI Customer Support Assisstant</h1>
-    <p>Voice assistant for your car detailing needs—quick, responsive, and always available.</p>
+  <header class="container">
+    <div class="badge"><span class="stars">★★★★★</span> 125+ 5-Star Google Reviews</div>
+    <h1>Speed Auto Detailing</h1>
+    <p class="subtitle">Premium car detailing in Dallas — interior deep cleans, paint correction, ceramic coating (3–6 year protection), PPF, tint, and more. Chat with our AI receptionist anytime for quotes and availability.</p>
+
+    <div class="hero-card">
+      <div class="hero-item">
+        <h3>Open Hours</h3>
+        <p>Mon–Sat: 8:00am–6:00pm · Sun by appointment</p>
+      </div>
+      <div class="hero-item">
+        <h3>Service Area</h3>
+        <p>Dallas–Fort Worth metro • Mobile & in-studio options</p>
+      </div>
+    </div>
   </header>
 
-  <section class="services">
-    <h2>Our Coverage</h2>
-    <ul>
-      <li>Understanding detailing packages and pricing</li>
-      <li>Explaining service steps (e.g., Wash & Wax, Ceramic Coating)</li>
-      <li>Booking appointments or lead capture guidance</li>
-      <li>Answering FAQ (availability, products, vehicle prep)</li>
-    </ul>
-  </section>
+  <main class="container">
+    <!-- Services -->
+    <section id="services">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub">High-quality work, safe products, and meticulous attention to detail.</p>
 
-  <section class="agent-section">
-    <elevenlabs-convai agent-id="agent_7101k4jv1tfmfxt842pyna3y2dhg"></elevenlabs-convai>
-    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-    <div>
-      <a href="#contact" class="cta-button">Ask Our Agent a Question</a>
-    </div>
-  </section>
+      <div class="grid">
+        <article class="card">
+          <span class="pill">Interior</span>
+          <h3>Full Interior Cleaning</h3>
+          <ul class="list">
+            <li>Deep vacuum, steam clean & shampoo (seats, carpets, mats)</li>
+            <li>Leather clean & condition · Plastics brushed & dressed</li>
+            <li>Crevice air purge · Odor neutralization</li>
+          </ul>
+        </article>
 
-  <section class="contact" id="contact">
-    <h2>Contact Details</h2>
-    <p><strong>Email:</strong> support@example.com</p>
-    <p><strong>Phone:</strong> (555) 123-4567</p>
-    <p><strong>Hours:</strong> Mon–Fri: 9 AM – 5 PM</
+        <article class="card">
+          <span class="pill">Exterior</span>
+          <h3>Wash &amp; Wax</h3>
+          <ul class="list">
+            <li>pH-balanced hand wash · Iron & tar decon</li>
+            <li>Clay bar for smooth paint · Premium carnauba/polymer wax</li>
+            <li>Glass & tire dressing finish</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="pill">Correction</span>
+          <h3>Paint Correction</h3>
+          <ul class="list">
+            <li>Single to multi-stage machine polishing</li>
+            <li>Removes swirls, haze, light scratches & oxidation</li>
+            <li>Restores clarity & gloss before coating or PPF</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="pill">Protection</span>
+          <h3>Ceramic Coating (3–6 yrs)</h3>
+          <ul class="list">
+            <li>Pro-grade SiO₂ protection · Extreme hydrophobics</li>
+            <li>UV & chemical resistance · Easier maintenance</li>
+            <li>Applied after surface prep / correction</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="pill">Film</span>
+          <h3>Paint Protection Film (PPF)</h3>
+          <ul class="list">
+            <li>Self-healing TPU film on high-impact areas or full body</li>
+            <li>Rock chip & road rash defense with invisible finish</li>
+            <li>Edge-wrapped installs where possible</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="pill">Comfort</span>
+          <h3>Window Tinting</h3>
+          <ul class="list">
+            <li>Dyed, carbon, or ceramic films</li>
+            <li>Heat & UV rejection · Glare reduction</li>
+            <li>Clean, dust-free installs</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="pill">Restore</span>
+          <h3>Headlight Restoration</h3>
+          <ul class="list">
+            <li>Wet-sand & polish to clear yellowed lenses</li>
+            <li>UV sealant or PPF overlay for longevity</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="pill">Freshen</span>
+          <h3>Smoke/Odor Removal</h3>
+          <ul class="list">
+            <li>Source removal + deep interior sanitation</li>
+            <li>Ozone treatment / enzyme neutralizers</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="pill">Quick</span>
+          <h3>Mini-Interior Cleaning</h3>
+          <ul class="list">
+            <li>Vacuum, wipe-down, glass & light stain spot-treat</li>
+            <li>Perfect for maintenance between full details</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages">
+      <h2 class="section-title">Packages</h2>
+      <p class="section-sub">Tailored options for daily drivers to show cars. Get a fast quote via the chat widget.</p>
+
+      <div class="grid">
+        <article class="card package">
+          <h3>Essential Clean</h3>
+          <p class="price">Get a Quote</p>
+          <ul class="list">
+            <li>Hand wash & wheels</li>
+            <li>Interior vacuum & wipe-down</li>
+            <li>Glass & tire shine</li>
+          </ul>
+        </article>
+
+        <article class="card package">
+          <h3>Gloss & Protect</h3>
+          <p class="price">Get a Quote</p>
+          <ul class="list">
+            <li>Decon wash + clay bar</li>
+            <li>Single-stage polish</li>
+            <li>6-month sealant or wax</li>
+            <li>Interior refresh</li>
+          </ul>
+        </article>
+
+        <article class="card package">
+          <h3>Ceramic Signature</h3>
+          <p class="price">Get a Quote</p>
+          <ul class="list">
+            <li>Correction as needed</li>
+            <li>3–6 year ceramic coating</li>
+            <li>Wheel face & glass protection</li>
+            <li>Aftercare guidance</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <h2 class="section-title">Our Process</h2>
+      <p class="section-sub">We combine safe methods with pro products for consistent, show-worthy results.</p>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><strong>Assess</strong><p>Inspect paint & interior, plan the work.</p></div>
+        <div class="step"><div class="num">2</div><strong>Prep</strong><p>Decon, masking & safe work setup.</p></div>
+        <div class="step"><div class="num">3</div><strong>Clean</strong><p>Deep interior + contact-safe exterior wash.</p></div>
+        <div class="step"><div class="num">4</div><strong>Correct/Protect</strong><p>Polish, coat, film, and finish.</p></div>
+        <div class="step"><div class="num">5</div><strong>Inspect</strong><p>Final QC & customer walk-through.</p></div>
+      </div>
+    </section>
+
+    <!-- FAQs + Contact -->
+    <section class="grid">
+      <div class="faq">
+        <h2 class="section-title">FAQs</h2>
+        <details>
+          <summary>How long does a full interior take?</summary>
+          <p>Typically 2–4 hours depending on vehicle size and condition.</p>
+        </details>
+        <details>
+          <summary>Do ceramic coatings really last 3–6 years?</summary>
+          <p>Yes, with proper prep and maintenance. We’ll advise care to maximize lifespan.</p>
+        </details>
+        <details>
+          <summary>Mobile or studio?</summary>
+          <p>Both. We can come to you (power/water access preferred) or book you at our studio.</p>
+        </details>
+        <details>
+          <summary>How do I get a quote?</summary>
+          <p>Use the chat widget (bottom-right). Share your vehicle, service, and contact details.</p>
+        </details>
+      </div>
+
+      <div class="faq">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-card">
+          <p><strong>Email:</strong> <a href="mailto:support@example.com">support@example.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></p>
+          <p><strong>Hours:</strong> Mon–Sat 8:00am–6:00pm</p>
+          <p><strong>Location:</strong> Dallas, TX · Mobile & Studio</p>
+          <p class="mono">Tip: Tap the chat widget to get a fast quote from our AI receptionist.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Speed Auto Detailing · Dallas, TX · 125+ 5-Star Reviews
+  </footer>
+
+  <!-- ElevenLabs Agent Widget (floating). Remove/replace agent-id as needed -->
+  <elevenlabs-convai agent-id="agent_7101k4jv1tfmfxt842pyna3y2dhg"></elevenlabs-convai>
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
